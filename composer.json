@@ -64,10 +64,10 @@
             "./vendor/bin/psalm"
         ], 
         "cs-check": [
-            "phpcs --colors -p --cache --tab-width=4 --standard=PSR2 ./ --ignore=/vendor,/storage/framework,/bootstrap/cache,/public,/resources,/app/Http/Middleware,/database/migrations"
+            "phpcs --colors -p --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations"
         ], 
         "cs-fix": [
-            "phpcbf --tab-width=4 --standard=PSR2 ./ --ignore=/vendor,/storage/framework,/bootstrap/cache,/public,/resources,/app/Http/Middleware,/database/migrations"
+            "phpcbf --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations"
         ]
     }
 }

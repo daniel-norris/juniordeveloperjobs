@@ -8,6 +8,7 @@ name: Tests
 jobs:
   runPHPUnitTests:
     runs-on: ubuntu-20.04
+    name: Run PHP Unit tests
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v5
@@ -15,7 +16,9 @@ jobs:
           progress: yes
           version: 2
           php_version: 8.0
-      - run: php artisan test
+      - run: ./vendor/bin/sail up
+      - run: sail php artisan key:generate
+      - run: sail php artisan test
   
 
 #   runStaticAnalysis:

@@ -19,12 +19,14 @@ jobs:
       - run: cp .env.example .env
       - run: php artisan key:generate
       - run: php artisan test
-  
+  runStaticAnalysis:
+    name: Run static analysis on Psalm
+    runs-on: ubuntu-20.04
+    needs: runPHPUnitTests
+    steps:
+      - uses: psalm/psalm-github-actions@1.1.2
 
-#   runStaticAnalysis:
-#   name: Run Psalm Static Analysis
-#   runs-on: ubuntu-20.04
-# - name: Composer (php-actions)
+
 
 
 

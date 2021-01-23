@@ -21,7 +21,9 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "squizlabs/php_codesniffer": "*",
+        "vimeo/psalm": "^4.4"
     },
     "config": {
         "optimize-autoloader": true,
@@ -57,6 +59,15 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "psalm": [
+            "./vendor/bin/psalm"
+        ], 
+        "cs-check": [
+            "phpcs --colors -p --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations"
+        ], 
+        "cs-fix": [
+            "phpcbf --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations"
         ]
     }
 }

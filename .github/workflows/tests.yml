@@ -16,9 +16,8 @@ jobs:
           progress: yes
           version: 2
           php_version: 8.0
-      - run: ./vendor/bin/sail up
-      - run: sail php artisan key:generate
-      - run: sail php artisan test
+      - run: php artisan key:generate
+      - run: php artisan test
   
 
 #   runStaticAnalysis:

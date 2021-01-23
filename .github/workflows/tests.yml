@@ -6,18 +6,16 @@ on:
 name: Tests
 
 jobs:
-
   runPHPUnitTests:
-  name: Run PHP Unit tests
-  runs-on: ubuntu-20.04
-  steps:
-  - uses: actions/checkout@v2
-  - uses: php-actions/composer@v5
-    with: 
-      progress: yes
-      version: 2
-      php_version: 8.0
-  - run: php artisan test
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v5
+        with: 
+          progress: yes
+          version: 2
+          php_version: 8.0
+      - run: php artisan test
   
 
 #   runStaticAnalysis:

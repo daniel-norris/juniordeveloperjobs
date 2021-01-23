@@ -13,8 +13,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v5
         with: 
+          # show installation progress
           progress: yes
+          # composer version
           version: 2
+          # php version
           php_version: 8.0
       - run: cp .env.example .env
       - run: php artisan key:generate
@@ -22,8 +25,15 @@ jobs:
   runStaticAnalysis:
     name: Run static analysis on Psalm
     runs-on: ubuntu-20.04
-    needs: runPHPUnitTests
     steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v5
+        with: 
+          progress: yes
+          version: 2
+          php_version: 8.0
+      - run: cp .env.example .env
+      - run: php artisan key:generate
       - uses: psalm/psalm-github-actions@1.1.2
 
 

@@ -6,9 +6,9 @@ A work in progress. A job board for Junior Developer jobs.
 
 ## Project Links
 
-*JIRA:* (juniordevelopers.atlassian.net)[https://juniordevelopers.atlassian.net/]  
+**JIRA:** [juniordevelopers.atlassian.net](https://juniordevelopers.atlassian.net/)  
 
-*CONFLUENCE:* (juniordevelopers.atlassian.net/wiki/spaces)[https://juniordevelopers.atlassian.net/wiki/spaces/HOME/overview]
+**CONFLUENCE:** [juniordevelopers.atlassian.net/wiki/spaces](https://juniordevelopers.atlassian.net/wiki/spaces/HOME/overview)  
 
 ## Installation
 
@@ -16,19 +16,19 @@ The project is using Laravel's Sail package to setup Docker containers to run th
 
 Git pull the project using: 
 
-```bash
+```
 git clone git@github.com:daniel-norris/juniordevelopers.git <dir>
 ```
 
 Alias the Sail command in your CLI: 
 
-```bash
+```
 alias sail='bash vendor/bin/sail'
 ```
 
 Spin up the Docker containers:
 
-```bash
+```
 sail up
 ```
 
@@ -50,11 +50,15 @@ C:\Windows\System32\Drivers\etc\hosts
 
 Add the following entry: 
 
+```
 <youipaddress> local.juniordeveloperjobs
+```
 
 You can now view the project locally at: 
 
-`http://local.juniordeveloperjobs`
+```
+http://local.juniordeveloperjobs
+```
 
 ## Workflow 
 
@@ -64,12 +68,16 @@ The project has an automated workflow that integrates GitHub activity with JIRA.
 
 e.g.  
 
-*Branch:* jd-9-setup-project-dependencies
-*Commit:* JD-9: automated GitHub Actions workflow
+**BRANCH:** jd-9-setup-project-dependencies  
+
+
+**COMMIT:** JD-9: automated GitHub Actions workflow  
 
 ### Code Standards
 
-The project has a number of tools to maintain code integrity. *PHP Code Sniffer*, maintains adherence to PSR12 standards. 
+The project has a number of tools to maintain code integrity. A pipeline using GitHub Actions is setup to run these tests automatically when a pull request is made. You can also run then locally on your machine before pushing to GitHub.
+
+*PHP Code Sniffer*, maintains adherence to PSR12 standards. 
 
 You can run PHPCS prior to creating a pull request using: 
 

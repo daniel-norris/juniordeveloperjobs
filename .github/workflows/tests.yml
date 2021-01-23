@@ -16,6 +16,7 @@ jobs:
           progress: yes
           version: 2
           php_version: 8.0
+      - run: cp .env.example .env
       - run: php artisan key:generate
       - run: php artisan test
   

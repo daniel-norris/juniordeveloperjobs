@@ -44,6 +44,16 @@ services:
             - sail
         healthcheck:
           test: ["CMD", "mysqladmin", "ping"]
+    phpmyadmin:
+        image: phpmyadmin
+        container_name: phpmyadmin
+        environment:
+            - PMA_ARBITRARY=1
+        restart: always
+        ports:
+            - 8080:80
+        networks:
+            - sail
 #    pgsql:
 #        image: postgres:13
 #        ports:

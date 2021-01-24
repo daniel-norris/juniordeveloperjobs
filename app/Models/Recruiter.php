@@ -28,4 +28,14 @@ class Recruiter extends Model
     {
         return $this->hasMany(Advert::class);
     }
+
+     /**
+     * 
+     * Get all the technology associated with the recruiter.
+     * 
+     */
+    public function tech()
+    {
+        return $this->morphToMany(Technology::class, 'techable');
+    }
 }

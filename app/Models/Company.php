@@ -28,4 +28,14 @@ class Company extends Model
     {
         return $this->hasManyThrough(Advert::class, Recruiter::class);
     }
+
+    /**
+     * 
+     * Get all the technology associated with the company.
+     * 
+     */
+    public function tech()
+    {
+        return $this->morphToMany(Technology::class, 'techable');
+    }
 }

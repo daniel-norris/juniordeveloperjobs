@@ -18,4 +18,14 @@ class Advert extends Model
     {
         return $this->belongsTo(Recruiter::class);
     }
+
+     /**
+     * 
+     * Get all the technology associated with the advert.
+     * 
+     */
+    public function tech()
+    {
+        return $this->morphToMany(Technology::class, 'techable');
+    }
 }

@@ -18,4 +18,14 @@ class Recruiter extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    /**
+     * 
+     * Get the adverts posted by the recruiter.
+     * 
+     */
+    public function adverts()
+    {
+        return $this->hasMany(Advert::class);
+    }
 }

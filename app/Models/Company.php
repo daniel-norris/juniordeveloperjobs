@@ -10,9 +10,9 @@ class Company extends Model
     use HasFactory;
 
     /**
-     * 
+     *
      * Get recruiters at company.
-     * 
+     *
      */
     public function recruiters()
     {
@@ -20,12 +20,22 @@ class Company extends Model
     }
 
     /**
-     * 
+     *
      *  Get all adverts associated with this company.
-     * 
-     */ 
+     *
+     */
     public function adverts()
     {
         return $this->hasManyThrough(Advert::class, Recruiter::class);
+    }
+
+    /**
+     *
+     * Get all the technology associated with the company.
+     *
+     */
+    public function tech()
+    {
+        return $this->morphToMany(Technology::class, 'techable');
     }
 }

@@ -10,9 +10,9 @@ class Recruiter extends Model
     use HasFactory;
 
     /**
-     * 
+     *
      * Get the recruiter's company.
-     * 
+     *
      */
     public function company()
     {
@@ -20,12 +20,22 @@ class Recruiter extends Model
     }
 
     /**
-     * 
+     *
      * Get the adverts posted by the recruiter.
-     * 
+     *
      */
     public function adverts()
     {
         return $this->hasMany(Advert::class);
+    }
+
+     /**
+     *
+     * Get all the technology associated with the recruiter.
+     *
+     */
+    public function tech()
+    {
+        return $this->morphToMany(Technology::class, 'techable');
     }
 }

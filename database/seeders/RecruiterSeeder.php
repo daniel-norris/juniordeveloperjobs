@@ -3,18 +3,17 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Recruiter;
 
-class DatabaseSeeder extends Seeder
+class RecruiterSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            RecruiterSeeder::class,
-        ]);
+        Recruiter::factory()->count(10)->create();
     }
 }

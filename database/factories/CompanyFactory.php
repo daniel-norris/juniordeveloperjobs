@@ -22,7 +22,6 @@ class CompanyFactory extends Factory
      */
     public function definition()
     {
-
         $filepath = storage_path('app/public/images');
 
         if (!Storage::exists($filepath)) {

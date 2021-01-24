@@ -18,4 +18,14 @@ class Company extends Model
     {
         return $this->hasMany(Recruiter::class);
     }
+
+    /**
+     * 
+     *  Get all adverts associated with this company.
+     * 
+     */ 
+    public function adverts()
+    {
+        return $this->hasManyThrough(Advert::class, Recruiter::class);
+    }
 }

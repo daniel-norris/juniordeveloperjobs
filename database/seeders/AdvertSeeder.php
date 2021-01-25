@@ -14,6 +14,9 @@ class AdvertSeeder extends Seeder
      */
     public function run()
     {
-        Advert::factory()->count(20)->create();
+        Advert::factory()
+            ->count(3)
+            ->hasTech(mt_rand(1, 2))
+            ->create();
     }
 }

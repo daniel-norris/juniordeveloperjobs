@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Advert;
 use App\Models\Recruiter;
+use App\Models\Technology;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AdvertFactory extends Factory
@@ -36,7 +37,7 @@ class AdvertFactory extends Factory
             'featured' => $this->faker->boolean(),
             'external_url' => $this->faker->url(),
             'remote' => $this->faker->boolean(),
-            'recruiter_id' => Recruiter::factory(),
+            'recruiter_id' => Recruiter::factory()->hasTech(mt_rand(1, 2))->create(),
             'duration' => $this->faker->randomElement([12, 24, 48, 72, 120, 336]),
         ];
     }

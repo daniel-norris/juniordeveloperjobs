@@ -4,9 +4,9 @@ namespace Database\Factories;
 
 use App\Models\Recruiter;
 use App\Models\Company;
+use App\Models\Technology;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Storage;
-
 
 class RecruiterFactory extends Factory
 {
@@ -36,7 +36,7 @@ class RecruiterFactory extends Factory
             'surname' => $this->faker->lastName(),
             'bio' => $this->faker->text(200),
             'avatar' => $this->faker->image($filepath, 400, 300, 'avatar', null, false),
-            'company_id' => Company::factory(),
+            'company_id' => Company::factory()->hasTech(mt_rand(1, 2))->create(),
             'account_type' => 'basic',
         ];
     }

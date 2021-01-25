@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Advert;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {

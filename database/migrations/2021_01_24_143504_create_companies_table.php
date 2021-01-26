@@ -24,7 +24,7 @@ class CreateCompaniesTable extends Migration
             $table->string('country');
             $table->string('postcode');
             $table->string('email');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('url');
             $table->string('logo');
             $table->string('account_type');

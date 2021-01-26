@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Advert;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            AdvertSeeder::class,
+        ]);
     }
 }

@@ -18,10 +18,11 @@ class CreateAdvertsTable extends Migration
             $table->string('reference');
             $table->string('title');
             $table->string('address_1');
-            $table->string('address_2');
+            $table->string('address_2')->nullable();
             $table->string('city');
-            $table->string('region');
+            $table->string('region')->nullable();
             $table->string('country');
+            $table->string('postcode');
             $table->integer('min_salary');
             $table->integer('max_salary');
             $table->longText('description');

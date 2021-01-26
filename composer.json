@@ -69,8 +69,14 @@
         "cs-fix": [
             "phpcbf --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations"
         ],
-        "test": [
-            "phpunit --coverage-text"
+        "coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --color=always --coverage-text"
+        ],
+        "test-all": [
+            "@psalm",
+            "@cs-check",
+            "@coverage"
         ]
     }
 }

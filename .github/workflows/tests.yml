@@ -21,6 +21,7 @@ jobs:
           php_version: 8.0
       - run: cp .env.example .env
       - run: php artisan key:generate
+      - run: php artisan migrate
       - run: php artisan test
   runStaticAnalysis:
     name: Run static analysis on Psalm

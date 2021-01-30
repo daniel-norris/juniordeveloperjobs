@@ -1,7 +1,7 @@
 <x-layout>
     <main class="container mx-auto flex-grow py-16">
         <div class="flex h-80 items-center justify-center">
-            <form class="flex flex-col w-1/3">
+            <form action="/search" class="flex flex-col w-1/3">
                 <label aria-label="search" for="search"></label>
                 <input class="py-2 px-4 rounded-lg shadow-md" type="text" id="search" name="search" placeholder="Search for your dream job now...">
             </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advert;
+use App\Services\SearchProvider;
 use Illuminate\Http\Request;
 
 class AdvertController extends Controller
@@ -17,5 +18,14 @@ class AdvertController extends Controller
         $adverts = Advert::all();
 
         return view('main', ['adverts' => $adverts]);
+    }
+
+    public function search(Request $request, SearchProvider $search)
+    {
+        $input = $request->search;
+
+        $results = $search->create($input);
+
+        return view('main', ['adverts' => $results]);
     }
 }

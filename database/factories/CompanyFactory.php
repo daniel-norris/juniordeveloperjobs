@@ -30,7 +30,19 @@ class CompanyFactory extends Factory
 
         return [
             'name' => $this->faker->company(),
-            'name_registered' => $this->faker->company(),
+            'name_registered' => $this->faker->randomElement([
+                'Spotify',
+                'Amazon Web Services',
+                'GitHub',
+                'Shopify',
+                'Netflix',
+                'Microsoft',
+                'Facebook',
+                'Instagram',
+                'Palantir',
+                'Google',
+                'Twitter',
+            ]),
             'address_1' => $this->faker->secondaryAddress(),
             'city' => $this->faker->city(),
             'region' => $this->faker->county(),

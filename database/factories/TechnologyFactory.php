@@ -22,7 +22,7 @@ class TechnologyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique->randomElement([
+            'name' => $this->faker->randomElement([
                 'React',
                 'Node',
                 'Java',

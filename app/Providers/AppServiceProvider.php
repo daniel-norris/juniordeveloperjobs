@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(SearchProvider::class, function ($app) {
-            return new SearchProvider;
+            return new SearchProvider();
         });
     }
 

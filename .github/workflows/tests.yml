@@ -53,4 +53,4 @@ jobs:
           php_version: 8.0
       - run: cp .env.example .env
       - run: php artisan key:generate
-      - run: ./vendor/bin/phpcs --colors -p --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations,/bootstrap/cache/services.php,/bootstrap/cache/packages.php
+      - run: ./vendor/bin/phpcs

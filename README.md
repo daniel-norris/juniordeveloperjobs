@@ -103,12 +103,6 @@ Unit tests are run using **PHP Unit**.
 sail composer test
 ```
 
-All tests can be run locally using: 
-
-```
-sail test-all
-```
-
 ### Test Coverage
 
 We're trying to maintain 100% test coverage across the project. 
@@ -119,3 +113,16 @@ Test coverage can be checked using:
 sail coverage
 ```
 
+### Pipeline
+
+A pipeline is setup using GitHub Actions that checks on pull request the following tests:
+
+- PHP CS
+- Psalm
+- PHP Unit
+
+All tests can be run locally before pushing using: 
+
+```
+sail test-all
+```

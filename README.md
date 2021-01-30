@@ -1,4 +1,4 @@
-# JuniorDeveloperJobs
+# Junior Developer Jobs
 
 ![Tests](https://github.com/daniel-norris/juniordevelopers/workflows/Tests/badge.svg)
 
@@ -40,7 +40,7 @@ sail php artisan key:generate
 
 ### Hosts
 
-There is currently no QA environment setup for JuniorDeveloperJobs yet but there are plans for it to be included in the future. It may be worthwhile setting up your hosts file now for your local environment. 
+There is currently no QA environment setup for Junior Developer Jobs yet but there are plans for it to be included in the future. This is optional, bu it may be worthwhile setting up your hosts file now for your local environment. 
 
 In Windows 10 you can find this at: 
 
@@ -103,4 +103,19 @@ Unit tests are run using **PHP Unit**.
 sail composer test
 ```
 
+All tests can be run locally using: 
+
+```
+sail test-all
+```
+
+### Test Coverage
+
+We're trying to maintain 100% test coverage across the project. 
+
+Test coverage can be checked using:
+
+```
+sail coverage
+```
 

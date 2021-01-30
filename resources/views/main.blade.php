@@ -1,3 +1,5 @@
 <x-layout>
-    <h1 class="bg-blue-500">testing tailwind</h1>
+    <main class="container mx-auto flex-grow">
+        
+    </main>
 </x-layout>

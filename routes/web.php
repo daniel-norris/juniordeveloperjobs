@@ -16,4 +16,4 @@ use App\Http\Controllers\AdvertController;
 
 Route::get('/', [AdvertController::class, 'index']);
 
-Route::get('/search', [AdvertController::class, 'search']);
+Route::get('/jobs', [AdvertController::class, 'search']);

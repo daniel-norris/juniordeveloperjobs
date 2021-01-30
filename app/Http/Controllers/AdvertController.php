@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advert;
 use App\Services\SearchProvider;
+use App\Http\Requests\SearchProviderRequest;
 use Illuminate\Http\Request;
 
 class AdvertController extends Controller
@@ -20,9 +21,10 @@ class AdvertController extends Controller
         return view('main', ['adverts' => $adverts]);
     }
 
-    public function search(Request $request, SearchProvider $search)
+    public function search(SearchProviderRequest $request, SearchProvider $search)
     {
-        $input = $request->search;
+        $input = $request->validated();
+        $input = $input['search'];
 
         $results = $search->create($input);
 

@@ -7,10 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class SearchProvider extends Model
 {
-    public function create(string $input)
+    public function create(?string $input)
     {
         $input = '%' . $input . '%';
 
+        if (empty($input)) {
+            $results = DB::table('adverts')->get();
+            return $results;
+        }
+        
         $results = DB::table('adverts')
                         ->where('title', 'like', $input)
                         ->orWhere('description', 'like', $input)

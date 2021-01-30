@@ -25,11 +25,32 @@ class AdvertFactory extends Factory
     {
         return [
             'reference' => $this->faker->regexify('[A-Z]{4}[0-9]{6}'),
-            'title' => $this->faker->sentence(mt_rand(3, 6)),
+            'title' => $this->faker->randomElement([
+                'PHP Developer',
+                'Java Developer',
+                'Junior Developer', 
+                'Graduate Developer',
+                'Graduate Software Engineer',
+                'Software Engineer',
+                'Junior Front End Developer',
+                'Front End Developer',
+                'Full Stack Developer',
+                'C# Developer'
+            ]),
             'address_1' => $this->faker->secondaryAddress(),
             'city' => $this->faker->city(),
             'region' => $this->faker->county(),
-            'country' => $this->faker->country(),
+            'country' => $this->faker->randomElement([
+                'United States',
+                'United Kingdom', 
+                'France',
+                'Germany',
+                'Holland',
+                'Spain',
+                'Canada',
+                'Sweden',
+                'Norway'
+            ]),
             'postcode' => $this->faker->postcode(),
             'min_salary' => $this->faker->numberBetween(mt_rand(25000, 29000), mt_rand(29001, 31000)),
             'max_salary' => $this->faker->numberBetween(mt_rand(31001, 33000), mt_rand(33001, 35000)),

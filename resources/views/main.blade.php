@@ -63,13 +63,10 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">??</div>
-                                            <div class="text-sm text-gray-500">??</div>
+                                            <div class="text-sm text-gray-900">Spotify</div>
+                                            <div class="text-sm text-gray-500">Core</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <!-- <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            Active
-                                            </span> -->
                                             <div class="text-sm font-medium text-gray-900">
                                                 {{ $advert->address_1 . ', ' . $advert->city . ', ' . $advert->country }}
                                             </div>

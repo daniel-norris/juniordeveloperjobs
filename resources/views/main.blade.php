@@ -1,10 +1,20 @@
 <x-layout>
     <main class="container mx-auto flex-grow py-16">
-        <div class="flex h-80 items-center justify-center">
+
+        <div class="flex flex-col h-80 items-center justify-center">
             <form action="/jobs" class="flex flex-col w-1/3">
                 <label aria-label="search" for="search"></label>
                 <input class="py-2 px-4 rounded-lg shadow-md" type="text" id="search" name="search" placeholder="Search for your dream job now...">
             </form>
+            @if ($errors->any())
+            <div class="text-xs text-red-500 mt-4">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif 
         </div>
 
         <div class="-my-2 overflow-x-auto">
@@ -83,6 +93,13 @@
 
                 </div>
             </div>
+
+            @if (count($adverts) === 0)
+        
+                <p class="ml-4 text-sm text-gray-900">No jobs match that description. Try searching for something else.</p>
+    
+            @endif
+
         </div>
 
     </main>

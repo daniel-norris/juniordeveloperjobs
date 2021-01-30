@@ -61,13 +61,13 @@
             "@php artisan key:generate --ansi"
         ],
         "psalm": [
-            "./vendor/bin/psalm"
+            "@php vendor/bin/psalm"
         ], 
         "cs-check": [
-            "phpcs --colors -p --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations"
+            "@php vendor/bin/phpcs"
         ], 
         "cs-fix": [
-            "phpcbf --error-severity=1 --warning-severity=6 --tab-width=4 --standard=PSR12 ./ --ignore=/vendor,/public/index.php,/storage/framework/views,/database/migrations"
+            "@php vendor/bin/phpcbf"
         ],
         "coverage": [
             "@putenv XDEBUG_MODE=coverage",

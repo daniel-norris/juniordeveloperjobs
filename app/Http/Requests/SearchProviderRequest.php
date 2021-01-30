@@ -24,7 +24,7 @@ class SearchProviderRequest extends FormRequest
     public function rules()
     {
         return [
-            'search' => 'string|max:25',
+            'search' => ['max:25', 'nullable']
         ];
     }
 }

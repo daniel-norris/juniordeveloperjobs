@@ -71,7 +71,7 @@
         ],
         "coverage": [
             "@putenv XDEBUG_MODE=coverage",
-            "phpunit --color=always --coverage-text"
+            "phpunit --coverage-text"
         ],
         "test-all": [
             "@psalm",

@@ -46,11 +46,11 @@
 
                                 @foreach ($adverts as $advert)
 
-                                    <tr class="hover:bg-purple-50">
+                                    <tr class="hover:bg-yellow-50">
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-10 w-10 rounded-full" src="{{ asset('images/spotify.png') }}" alt="">
+                                                <img class="h-8 rounded-full" src="{{ asset('storage/images/spotify.png') }}" alt="">
                                             </div>
                                             <div class="ml-4">
                                                 <div class="text-sm font-medium text-gray-900">
@@ -75,7 +75,7 @@
                                             {{ $advert->min_salary . ' - ' . $advert->max_salary }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Apply</a>
+                                            <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>
                                         </td>
                                     </tr>
 

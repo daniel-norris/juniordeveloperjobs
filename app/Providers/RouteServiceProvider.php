@@ -30,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Define your route model bindings, pattern filters, etc.
+     * @codeCoverageIgnore
      *
      * @return void
      */
@@ -51,6 +52,7 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Configure the rate limiters for the application.
+     * @codeCoverageIgnore
      *
      * @return void
      */

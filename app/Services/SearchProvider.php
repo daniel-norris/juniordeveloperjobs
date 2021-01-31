@@ -19,7 +19,7 @@ class SearchProvider extends Model
         }
 
         $input = '/' . $input . '/i';
-        
+
         $advertData = Advert::all();
         $advertData = $advertData->filter(function ($advert) use ($input) {
             return preg_match($input, $advert->title) ||
@@ -31,18 +31,18 @@ class SearchProvider extends Model
                     preg_match($input, $advert->postcode) ||
                     preg_match($input, $advert->description);
         });
-        
+
         $advertData = $advertData->pluck('id');
         $advertData = $advertData->all();
 
         $companyData = Company::all();
         $companyData = $companyData->load(['recruiters', 'adverts']);
         $companyData = $companyData->whereIn('id', $advertData);
-        
+
         $results = Company::all();
         $results = $results->load(['recruiters', 'adverts']);
         $results = $results->filter(function ($company) use ($input) {
-            return preg_match($input, $company->id) || 
+            return preg_match($input, $company->id) ||
                     preg_match($input, $company->name) ||
                     preg_match($input, $company->name_registered) ||
                     preg_match($input, $company->address_1) ||
@@ -51,11 +51,10 @@ class SearchProvider extends Model
                     preg_match($input, $company->region) ||
                     preg_match($input, $company->country) ||
                     preg_match($input, $company->postcode);
-        }); 
-
+        });
 
         $results = $results->concat($companyData);
-        
+
         return $results;
     }
 }

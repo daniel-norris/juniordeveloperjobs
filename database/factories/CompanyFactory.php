@@ -51,7 +51,7 @@ class CompanyFactory extends Factory
             'email' => $this->faker->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'url' => $this->faker->url(),
-            'logo' => $this->faker->image($filepath, 400, 300, 'test', null, false),
+            'logo' => 'storage/images/spotify.png',
             'account_type' => 'basic',
         ];
     }

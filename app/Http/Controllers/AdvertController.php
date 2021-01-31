@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Advert;
 use App\Models\Company;
 use App\Services\SearchProvider;
 use App\Http\Requests\SearchProviderRequest;

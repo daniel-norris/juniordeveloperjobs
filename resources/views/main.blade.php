@@ -42,9 +42,9 @@
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
 
-                            @isset($adverts)
+                            @isset($data)
 
-                                @foreach ($adverts as $advert)
+                                @foreach ($data as $company)
 
                                     <tr class="hover:bg-yellow-50">
                                         <td class="px-6 py-4 whitespace-nowrap">
@@ -54,25 +54,25 @@
                                             </div>
                                             <div class="ml-4">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                {{ $advert->title }}
+                                                {{ $company->adverts[0]->title }}
                                                 </div>
                                                 <div class="text-sm text-gray-500">
-                                                {{ $advert->reference }}
+                                                {{ $company->adverts[0]->reference }}
                                                 </div>
                                             </div>
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">Spotify</div>
+                                            <div class="text-sm text-gray-900">{{ $company->name_registered }}</div>
                                             <div class="text-sm text-gray-500">Core</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm font-medium text-gray-900">
-                                                {{ $advert->address_1 . ', ' . $advert->city . ', ' . $advert->country }}
+                                                {{ $company->adverts[0]->city . ', ' . $company->adverts[0]->country }}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $advert->min_salary . ' - ' . $advert->max_salary }}
+                                            {{ '£' . $company->adverts[0]->min_salary . ' - ' . '£' . $company->adverts[0]->max_salary }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>
@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            @if (count($adverts) === 0)
+            @if (count($data) === 0)
         
                 <p class="ml-4 text-sm text-gray-900">No jobs match that description. Try searching for something else.</p>
     

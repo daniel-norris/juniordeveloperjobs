@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Advert;
+use App\Models\Company;
 use App\Services\SearchProvider;
 use App\Http\Requests\SearchProviderRequest;
-use Illuminate\Http\Request;
 
 class AdvertController extends Controller
 {
     public function index()
     {
-        $adverts = Advert::all();
+        $data = Company::all()->load(['recruiters', 'adverts']);
 
-        return view('main', ['adverts' => $adverts]);
+        return view('main', ['data' => $data]);
     }
 
     public function search(SearchProviderRequest $request, SearchProvider $search)
@@ -23,6 +22,6 @@ class AdvertController extends Controller
 
         $results = $search->create($input);
 
-        return view('main', ['adverts' => $results]);
+        return view('main', ['data' => $results]);
     }
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdvertController;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,11 @@ use App\Http\Controllers\AdvertController;
 |
 */
 
-Route::get('/', [AdvertController::class, 'index']);
+Route::get('/', [AdvertController::class, 'index'])->middleware('auth')->name('home');
+
+Route::get('/post', [AdvertController::class, 'post'])->name('post');
 
 Route::get('/jobs', [AdvertController::class, 'search']);
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate']);

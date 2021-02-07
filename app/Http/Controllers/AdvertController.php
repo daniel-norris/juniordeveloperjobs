@@ -15,6 +15,11 @@ class AdvertController extends Controller
         return view('main', ['data' => $data]);
     }
 
+    public function post()
+    {
+        return view('post');
+    }
+
     public function search(SearchProviderRequest $request, SearchProvider $search)
     {
         $input = $request->validated();

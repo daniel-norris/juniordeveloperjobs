@@ -12,6 +12,8 @@
                 Login
             </button>
         </form>
+
+        <a href="{{ route('register') }}" class="text-xs text-gray-600">Want to create an account?</a>
     </div>
 
 </x-layout>

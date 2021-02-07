@@ -1,6 +1,6 @@
 <x-layout>
     <div class="min-h-screen p-6">
-        <form method="POST" action="/login" class="flex flex-col w-60 items-baseline space-y-4">
+        <form method="POST" action="/login" class="flex flex-col w-60 items-baseline space-y-4 mb-4">
             @csrf
             <label for="email">Email</label>
             <input name="email" type="text">
@@ -14,6 +14,16 @@
         </form>
 
         <a href="{{ route('register') }}" class="text-xs text-gray-600">Want to create an account?</a>
+
+        @if ($errors->any())
+            <div>
+                <ul class="space-y-4">
+                @foreach ($errors->all() as $error)
+                    <li class="text-xs text-red-500">{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 
 </x-layout>

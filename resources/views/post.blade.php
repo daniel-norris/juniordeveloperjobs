@@ -1,4 +1,5 @@
 <x-layout>
-
-    Post something here.
+    <div class="min-h-screen">
+        <p>Post jobs here.</p>
+    </div>
 </x-layout>

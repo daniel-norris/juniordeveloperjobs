@@ -16,11 +16,14 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', [AdvertController::class, 'index'])->middleware('auth')->name('home');
-
-Route::get('/post', [AdvertController::class, 'post'])->name('post');
+Route::get('/', [AdvertController::class, 'index'])->name('home');
 
 Route::get('/jobs', [AdvertController::class, 'search']);
 
+Route::get('/post', [AdvertController::class, 'post'])->middleware('auth')->name('post');
+
+
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

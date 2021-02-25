@@ -33,7 +33,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8'
         ]);
-    
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -44,5 +44,4 @@ class RegisterController extends Controller
 
         return redirect()->route('home');
     }
-
 }

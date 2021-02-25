@@ -1,6 +1,5 @@
 <x-layout>
-    <main class="container mx-auto flex-grow py-16">
-
+    <div class="container mx-auto pb-12">
         <div class="flex flex-col h-80 items-center justify-center">
             <form action="/jobs" class="flex flex-col w-1/3">
                 <label aria-label="search" for="search"></label>
@@ -98,6 +97,5 @@
             @endif
 
         </div>
-
-    </main>
+    </div>
 </x-layout>

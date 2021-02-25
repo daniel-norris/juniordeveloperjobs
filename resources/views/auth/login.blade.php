@@ -1,29 +1,54 @@
 <x-layout>
-    <div class="min-h-screen p-6">
-        <form method="POST" action="/login" class="flex flex-col w-60 items-baseline space-y-4 mb-4">
-            @csrf
-            <label for="email">Email</label>
-            <input name="email" type="text">
+    <div class="flex flex-col justify-center py-12">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Sign in to your account
+            </h2>
+        </div>
 
-            <label for="password">Password</label>
-            <input name="password" type="password">
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                <form class="space-y-6" action="#" method="POST">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">
+                            Email address
+                        </label>
+                        <div class="mt-1">
+                            <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                        </div>
+                    </div>
 
-            <button type="submit" class="border border-gray-800 py-1 px-3 rounded-lg hover:text-white hover:bg-gray-600">
-                Login
-            </button>
-        </form>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">
+                            Password
+                        </label>
+                        <div class="mt-1">
+                            <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
+                        </div>
+                    </div>
 
-        <a href="{{ route('register') }}" class="text-xs text-gray-600">Want to create an account?</a>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded">
+                            <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+                            Remember me
+                            </label>
+                        </div>
 
-        @if ($errors->any())
-            <div>
-                <ul class="space-y-4">
-                @foreach ($errors->all() as $error)
-                    <li class="text-xs text-red-500">{{ $error }}</li>
-                @endforeach
-                </ul>
+                        <div class="text-sm">
+                            <a href="#" class="font-medium text-yellow-600 hover:text-yellow-500">
+                            Forgot your password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+                            Sign in
+                        </button>
+                    </div>
+                </form>
             </div>
-        @endif
+        </div>
     </div>
-
 </x-layout>

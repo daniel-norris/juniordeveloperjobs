@@ -1,17 +1,18 @@
 {
-    "name": "laravel/laravel",
+    "name": "app/juniordeveloperjobs",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A job board for Junior Developer Jobs.",
     "keywords": [
         "framework",
         "laravel"
     ],
-    "license": "MIT",
+    "license": "proprietary",
     "require": {
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/fortify": "^1.7",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5"
     },

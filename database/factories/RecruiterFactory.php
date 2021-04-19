@@ -34,6 +34,7 @@ class RecruiterFactory extends Factory
             'title' => $this->faker->title(),
             'forename' => $this->faker->firstName(),
             'surname' => $this->faker->lastName(),
+            'user_id' => 1,
             'bio' => $this->faker->text(200),
             'avatar' => $this->faker->image($filepath, 400, 300, 'avatar', null, false),
             'company_id' => Company::factory()->hasTech(mt_rand(1, 2))->create(),

@@ -51,14 +51,14 @@
                                             <div class="flex-shrink-0 h-10 w-10">
                                                 <img class="h-10 rounded-full" src="{{ asset($company->logo) }}" alt="">
                                             </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">
-                                                {{ $company->adverts[0]->title }}
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">
+                                                        {{ $company->adverts->first->title }}
+                                                    </div>
+                                                    <div class="text-sm text-gray-500">
+                                                        {{ $company->adverts->first->reference }}
+                                                    </div>
                                                 </div>
-                                                <div class="text-sm text-gray-500">
-                                                {{ $company->adverts[0]->reference }}
-                                                </div>
-                                            </div>
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
@@ -67,11 +67,11 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm font-medium text-gray-900">
-                                                {{ $company->adverts[0]->city . ', ' . $company->adverts[0]->country }}
+                                                {{ $company->adverts->first->city . ', ' . $company->adverts->first->country }}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ '£' . $company->adverts[0]->min_salary . ' - ' . '£' . $company->adverts[0]->max_salary }}
+                                            {{ '£' . $company->adverts->first->min_salary . ' - ' . '£' . $company->adverts->first->max_salary }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>

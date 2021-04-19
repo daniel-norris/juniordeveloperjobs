@@ -9,6 +9,17 @@ class Recruiter extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'forename',
+        'middle',
+        'surname',
+        'user_id',
+        'bio',
+        'avatar',
+        'company_id',
+    ];
+
     /**
      *
      * Get the recruiter's company.
@@ -37,5 +48,10 @@ class Recruiter extends Model
     public function tech()
     {
         return $this->morphToMany(Technology::class, 'techable');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

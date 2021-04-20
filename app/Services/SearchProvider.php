@@ -3,25 +3,24 @@
 namespace App\Services;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use App\Models\Company;
 use App\Models\Advert;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
 
 class SearchProvider extends Model
 {
-    public function create(?string $input): Collection
+    public function create(?string $input): Collection|null
     {
         if (empty($input)) {
-            $results = Company::all()->load(['recruiters', 'adverts']);
+            $results = Company::has('adverts')->get();
             return $results;
         }
 
         $input = '/' . $input . '/i';
 
-        $advertData = Advert::all();
-        $advertData = $advertData->filter(function ($advert) use ($input) {
+        $advertData = Advert::all()
+            ->filter(function ($advert) use ($input) {
             return preg_match($input, $advert->title) ||
                     preg_match($input, $advert->address_1) ||
                     preg_match($input, $advert->address_2) ||
@@ -30,18 +29,19 @@ class SearchProvider extends Model
                     preg_match($input, $advert->country) ||
                     preg_match($input, $advert->postcode) ||
                     preg_match($input, $advert->description);
-        });
+        })->pluck('id');
 
-        $advertData = $advertData->pluck('id');
-        $advertData = $advertData->all();
+        if (!isset($advertData)) {
+            return null;
+        }
 
-        $companyData = Company::all();
-        $companyData = $companyData->load(['recruiters', 'adverts']);
-        $companyData = $companyData->whereIn('id', $advertData);
+        $companyData = Company::whereHas('adverts', function (Builder $query) use ($advertData) {
+            $query->where('adverts.id', '=', [$advertData]);
+        })->get();
 
-        $results = Company::all();
-        $results = $results->load(['recruiters', 'adverts']);
-        $results = $results->filter(function ($company) use ($input) {
+        $results = Company::all()
+            ->load(['recruiters', 'adverts'])
+            ->filter(function ($company) use ($input) {
             return preg_match($input, $company->id) ||
                     preg_match($input, $company->name) ||
                     preg_match($input, $company->name_registered) ||
@@ -51,9 +51,7 @@ class SearchProvider extends Model
                     preg_match($input, $company->region) ||
                     preg_match($input, $company->country) ||
                     preg_match($input, $company->postcode);
-        });
-
-        $results = $results->concat($companyData);
+        })->concat($companyData);
 
         return $results;
     }

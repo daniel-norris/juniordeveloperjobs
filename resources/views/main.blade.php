@@ -6,13 +6,13 @@
                 <input class="py-2 px-4 rounded-lg shadow-md" type="text" id="search" name="search" placeholder="Search for your dream job now...">
             </form>
             @if ($errors->any())
-            <div class="text-xs text-red-500 mt-4">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="text-xs text-red-500 mt-4">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif 
         </div>
 
@@ -42,7 +42,6 @@
                         <tbody class="bg-white divide-y divide-gray-200">
 
                             @isset($data)
-
                                 @foreach ($data as $company)
 
                                     <tr class="hover:bg-yellow-50">
@@ -53,10 +52,10 @@
                                             </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">
-                                                        {{ $company->adverts->first->title }}
+                                                        {{ $company->adverts->first()->title }}
                                                     </div>
                                                     <div class="text-sm text-gray-500">
-                                                        {{ $company->adverts->first->reference }}
+                                                        {{ $company->adverts->first()->reference }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,11 +66,11 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm font-medium text-gray-900">
-                                                {{ $company->adverts->first->city . ', ' . $company->adverts->first->country }}
+                                                {{ $company->adverts->first()->city . ', ' . $company->adverts->first()->country }}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ '£' . $company->adverts->first->min_salary . ' - ' . '£' . $company->adverts->first->max_salary }}
+                                            {{ '£' . $company->adverts->first()->min_salary . ' - ' . '£' . $company->adverts->first()->max_salary }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>
@@ -79,21 +78,15 @@
                                     </tr>
 
                                 @endforeach
-                        
                             @endisset
 
                         </tbody>
                     </table>
-                        
-                   
-
                 </div>
             </div>
 
-            @if (count($data) === 0)
-        
+            @if (empty($data) || count($data) === 0)
                 <p class="ml-4 text-sm text-gray-900">No jobs match that description. Try searching for something else.</p>
-    
             @endif
 
         </div>

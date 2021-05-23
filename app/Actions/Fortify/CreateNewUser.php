@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Illuminate\Support\Str;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -38,7 +39,7 @@ class CreateNewUser implements CreatesNewUsers
             ])->validate();
     
             $user = User::create([
-                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']),
+                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']) . Str::padLeft(rand(1, 99), 2, '0'),
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);
@@ -82,7 +83,7 @@ class CreateNewUser implements CreatesNewUsers
             ])->validate();
     
             $user = User::create([
-                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']),
+                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']) . Str::padLeft(rand(1, 99), 2, '0'),
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);

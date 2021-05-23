@@ -42,40 +42,40 @@
                         <tbody class="bg-white divide-y divide-gray-200">
 
                             @isset($data)
-                                @foreach ($data as $company)
+                                @foreach ($data as $advert)
 
-                                    <tr class="hover:bg-yellow-50">
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-10 rounded-full" src="{{ asset($company->logo) }}" alt="">
-                                            </div>
-                                                <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">
-                                                        {{ $company->adverts->first()->title }}
-                                                    </div>
-                                                    <div class="text-sm text-gray-500">
-                                                        {{ $company->adverts->first()->reference }}
+                                        <tr class="hover:bg-yellow-50">
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <img class="h-10 rounded-full" src="{{ asset($advert->recruiter->company->logo) }}" alt="">
+                                                </div>
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                            {{ $advert->title }}
+                                                        </div>
+                                                        <div class="text-sm text-gray-500">
+                                                            {{ $advert->reference }}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ $company->name_registered }}</div>
-                                            <div class="text-sm text-gray-500">Core</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                {{ $company->adverts->first()->city . ', ' . $company->adverts->first()->country }}
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ '£' . $company->adverts->first()->min_salary . ' - ' . '£' . $company->adverts->first()->max_salary }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900">{{ $advert->recruiter->company->name_registered }}</div>
+                                                <div class="text-sm text-gray-500">Core</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{ $advert->city . ', ' . $advert->country }}
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                {{ '£' . $advert->min_salary . ' - ' . '£' . $advert->max_salary }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>
+                                            </td>
+                                        </tr>
 
                                 @endforeach
                             @endisset

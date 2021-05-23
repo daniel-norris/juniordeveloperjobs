@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Services\SearchProvider;
 use App\Http\Requests\SearchProviderRequest;
+use App\Models\Advert;
 
 class AdvertController extends Controller
 {
     public function index()
     {
-        $data = Company::all()->load(['recruiters', 'adverts']);
+        $data = Advert::all();
 
         return view('main', ['data' => $data]);
     }
@@ -25,8 +26,8 @@ class AdvertController extends Controller
         $input = $request->validated();
         $input = $input['search'];
 
-        $results = $search->create($input);
+        $data = $search->create($input);
 
-        return view('main', ['data' => $results]);
+        return view('main', ['data' => $data]);
     }
 }

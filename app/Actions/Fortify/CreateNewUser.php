@@ -18,12 +18,11 @@ class CreateNewUser implements CreatesNewUsers
      * Validate and create a newly registered user.
      *
      * @param  array  $input
-     * 
+     *
      */
     public function create(array $input)
     {
         if (isset($input['user_type']) && $input['user_type'] === 'Job Seeker') {
-
             Validator::make($input, [
                 'forename' => ['required', 'string', 'max:255'],
                 'surname' => ['required', 'string', 'max:255'],
@@ -37,13 +36,14 @@ class CreateNewUser implements CreatesNewUsers
                 'country' => ['string'],
                 'password' => $this->passwordRules(),
             ])->validate();
-    
+
             $user = User::create([
-                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']) . Str::padLeft(rand(1, 99), 2, '0'),
+                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']) .
+                    Str::padLeft(strval(rand(1, 99)), 2, '0'),
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);
-                
+
             $user->seeker()->create([
                 'title' => '',
                 'forename' => $input['forename'],
@@ -57,12 +57,11 @@ class CreateNewUser implements CreatesNewUsers
                 'state' => $input['state'],
                 'zip' => $input['zip'],
             ]);
-    
+
             return $user;
         };
 
         if (isset($input['user_type']) && $input['user_type'] === 'Recruiter') {
-
             Validator::make($input, [
                 'forename' => ['required', 'string', 'max:255'],
                 'surname' => ['required', 'string', 'max:255'],
@@ -81,9 +80,10 @@ class CreateNewUser implements CreatesNewUsers
                 'company_url' => ['string'],
                 'password' => $this->passwordRules(),
             ])->validate();
-    
+
             $user = User::create([
-                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']) . Str::padLeft(rand(1, 99), 2, '0'),
+                'username' => ucfirst(substr($input['forename'], 0, 2)) . ucfirst($input['surname']) .
+                    Str::padLeft(strval(rand(1, 99)), 2, '0'),
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]);

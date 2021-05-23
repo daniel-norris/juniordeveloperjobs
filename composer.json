@@ -2,10 +2,6 @@
     "name": "app/juniordeveloperjobs",
     "type": "project",
     "description": "A job board for Junior Developer Jobs.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
     "license": "proprietary",
     "require": {
         "php": "^7.3|^8.0",

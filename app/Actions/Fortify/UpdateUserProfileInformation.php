@@ -11,6 +11,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
     /**
      * Validate and update the given user's profile information.
+     * @psalm-suppress UndefinedInterfaceMethod
      *
      * @param  mixed  $user
      * @param  array  $input

@@ -9,7 +9,7 @@ use App\Models\Advert;
 
 class SearchProvider extends Model
 {
-    public function create(?string $input): Collection|null
+    public function create(?string $input): Collection | array
     {
         if (empty($input)) {
             return Advert::all();
@@ -29,7 +29,7 @@ class SearchProvider extends Model
                     preg_match($input, $company->country) ||
                     preg_match($input, $company->postcode);
             });
-        
+
         $results = collect();
 
         $companies->map(function ($company) use ($results) {

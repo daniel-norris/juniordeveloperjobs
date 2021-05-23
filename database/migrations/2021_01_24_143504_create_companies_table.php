@@ -27,7 +27,7 @@ class CreateCompaniesTable extends Migration
             $table->string('phone');
             $table->string('url');
             $table->string('logo');
-            $table->string('account_type');
+            $table->string('account_type')->nullable();
             $table->string('account_status')->default('active');
             $table->timestamps();
         });

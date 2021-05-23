@@ -5,7 +5,9 @@ namespace Database\Factories;
 use App\Models\Recruiter;
 use App\Models\Company;
 use App\Models\Technology;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class RecruiterFactory extends Factory
@@ -30,13 +32,18 @@ class RecruiterFactory extends Factory
             Storage::makeDirectory($filepath);
         }
 
+        $companyMax = config('testing.company.max');
+
+        $company = DB::table('companies')->count() < $companyMax ? Company::factory()->create() : DB::table('companies')->where('id', rand(1, $companyMax))->first()->id;
+
         return [
             'title' => $this->faker->title(),
             'forename' => $this->faker->firstName(),
             'surname' => $this->faker->lastName(),
+            'user_id' => User::factory()->create(),
             'bio' => $this->faker->text(200),
             'avatar' => $this->faker->image($filepath, 400, 300, 'avatar', null, false),
-            'company_id' => Company::factory()->hasTech(mt_rand(1, 2))->create(),
+            'company_id' => $company,
             'account_type' => 'basic',
         ];
     }

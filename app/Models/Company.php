@@ -9,6 +9,21 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'name_registered',
+        'address_1',
+        'address_2',
+        'city',
+        'region',
+        'country',
+        'postcode',
+        'email',
+        'phone',
+        'url',
+        'logo',
+    ];
+
     /**
      *
      * Get recruiters at company.

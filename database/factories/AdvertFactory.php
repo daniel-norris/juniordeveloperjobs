@@ -24,7 +24,7 @@ class AdvertFactory extends Factory
     public function definition()
     {
         return [
-            'reference' => $this->faker->regexify('[A-Z]{4}[0-9]{6}'),
+            'reference' => $this->faker->regexify('[A-Z]{2}[0-9]{6}'),
             'title' => $this->faker->randomElement([
                 'PHP Developer',
                 'Java Developer',
@@ -52,8 +52,8 @@ class AdvertFactory extends Factory
                 'Norway'
             ]),
             'postcode' => $this->faker->postcode(),
-            'min_salary' => $this->faker->numberBetween(mt_rand(25000, 29000), mt_rand(29001, 31000)),
-            'max_salary' => $this->faker->numberBetween(mt_rand(31001, 33000), mt_rand(33001, 35000)),
+            'min_salary' => $this->faker->numberBetween(mt_rand(21000, 29000), mt_rand(29001, 31000)),
+            'max_salary' => $this->faker->numberBetween(mt_rand(55001, 56000), mt_rand(56001, 129000)),
             'description' => $this->faker->paragraphs(mt_rand(6, 14), true),
             'featured' => $this->faker->boolean(),
             'external_url' => $this->faker->url(),

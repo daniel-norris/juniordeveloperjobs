@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Services\SearchProvider;
+use Database\Factories\RecruiterFactory;
 
 class AppServiceProvider extends ServiceProvider
 {

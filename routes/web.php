@@ -14,6 +14,23 @@ use App\Http\Controllers\AdvertController;
 |
 */
 
-Route::get('/', [AdvertController::class, 'index']);
+Route::get('/', [AdvertController::class, 'index'])->name('home');
 
 Route::get('/jobs', [AdvertController::class, 'search']);
+
+Route::get('/post', [AdvertController::class, 'post'])->middleware('auth')->name('post');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+// Route::post('/login', [AuthController::class, 'authenticate']);
+
+// Route::get('/register', [RegisterController::class, 'create']);
+// Route::post('/register', [RegisterController::class, 'store']);
+
+// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

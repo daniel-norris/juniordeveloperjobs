@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecruitersTable extends Migration
+class CreateJobSeekersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,22 @@ class CreateRecruitersTable extends Migration
      */
     public function up()
     {
-        Schema::create('recruiters', function (Blueprint $table) {
+        Schema::create('job_seekers', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
             $table->string('forename');
             $table->string('middle')->nullable();
-            $table->string('surname');
-            $table->longText('bio')->nullable();
-            $table->string('avatar')->nullable();
-            $table->foreignId('company_id')->constrained('companies')
+            $table->string('surname')->nullable();
+            $table->foreignId('user_id')->comment('fk to users table')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->string('account_type')->nullable();
-            $table->string('account_status')->default('active');
+            $table->longText('bio')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('country')->nullable();
+            $table->string('street')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
             $table->timestamps();
         });
     }
@@ -37,6 +40,6 @@ class CreateRecruitersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recruiters');
+        Schema::dropIfExists('job_seekers');
     }
 }

@@ -29,7 +29,14 @@ class CreateAdvertsTable extends Migration
             $table->boolean('featured');
             $table->string('external_url');
             $table->boolean('remote');
-            $table->foreignId('recruiter_id')->constrained('recruiters')
+            $table->foreignId('recruiter_id')
+                    ->comment('fk to recruiters table')
+                    ->constrained('recruiters')
+                    ->onupdate('cascade')
+                    ->onDelete('cascade');
+            $table->foreignId('company_id')
+                    ->comment('fk to companies table')
+                    ->constrained('companies')
                     ->onupdate('cascade')
                     ->onDelete('cascade');
             $table->timestamps();

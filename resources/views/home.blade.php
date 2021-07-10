@@ -1,7 +1,8 @@
 <x-layout>
     <div class="container mx-auto pb-12">
         <div class="flex flex-col h-80 items-center justify-center">
-            <form method="GET" action="jobs" class="flex flex-col w-1/3">
+            <form method="POST" action="search" class="flex flex-col w-1/3">
+                @csrf
                 <label aria-label="search" for="search"></label>
                 <input class="py-2 px-4 rounded-lg shadow-md" type="text" id="search" name="search" placeholder="Search for your dream job now...">
             </form>

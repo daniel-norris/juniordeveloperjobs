@@ -8,7 +8,14 @@
         <title>Jobs</title>
 
     </head>
-    <body class="antialiased">
-        {{ $slot }}
+    <body class="antialiased bg-gray-100 h-0 min-h-screen flex flex-col justify-between">
+        <div class="flex-grow">
+            <x-header/>
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+
+        <x-footer/>
     </body>
 </html>

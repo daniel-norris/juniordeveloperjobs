@@ -33,40 +33,38 @@
 
                             @isset($adverts)
                                 @foreach ($adverts as $advert)
-
-                                        <tr class="hover:bg-yellow-50">
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="flex items-center">
+                                    <tr class="hover:bg-yellow-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
                                                     <img class="h-10 rounded-full" src="" alt="">
                                                 </div>
-                                                    <div class="ml-4">
-                                                        <div class="text-sm font-medium text-gray-900">
-                                                            {{ $advert->title }}
-                                                        </div>
-                                                        <div class="text-sm text-gray-500">
-                                                            {{ $advert->reference }}
-                                                        </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">
+                                                        {{ $advert['title'] }}
+                                                    </div>
+                                                    <div class="text-sm text-gray-500">
+                                                        {{ $advert['reference'] }}
                                                     </div>
                                                 </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">{{ $advert->recruiter_id }}</div>
-                                                <div class="text-sm text-gray-500">Core</div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm font-medium text-gray-900">
-                                                    {{ $advert->city }}
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ '£' . $advert->min_salary . ' - ' . '£' . $advert->max_salary }}
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>
-                                            </td>
-                                        </tr>
-
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">{{ $advert['company'] }}</div>
+                                            <div class="text-sm text-gray-500">Core</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">
+                                                {{ $advert['city'] }}
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{ $advert['range_salary'] }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" class="text-yellow-600 hover:text-yellow-900">Apply</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             @endisset
 

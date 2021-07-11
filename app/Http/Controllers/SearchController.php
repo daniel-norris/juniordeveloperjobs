@@ -9,11 +9,17 @@ use App\Services\SearchProvider;
 
 class SearchController extends Controller
 {
-    public function index(): View
+    public function index(SearchProvider $search): View
     {
         $adverts = DB::table('adverts')->get();
 
-        return view('home', ['adverts' => $adverts]);
+        $results = collect();
+
+        $adverts->map(function ($advert) use ($results, $search) {
+            $results->push($search->mapResults($advert));
+        });
+
+        return view('home', ['adverts' => $results]);
     }
 
     public function search(Request $request, SearchProvider $search): View

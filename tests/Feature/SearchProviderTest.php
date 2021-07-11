@@ -48,8 +48,8 @@ class SearchProviderTest extends TestCase
 
         $result = $this->searchProvider->create($input);
 
-        $this->assertEquals('Software Engineer', $result[0]->title);
-        $this->assertEquals('Senior Software Engineer', $result[1]->title);
+        $this->assertEquals('Software Engineer', $result[0]['title']);
+        $this->assertEquals('Senior Software Engineer', $result[1]['title']);
         $this->assertEquals(8, count($result));
     }
 
@@ -66,8 +66,8 @@ class SearchProviderTest extends TestCase
 
         $result = $this->searchProvider->create($input);
 
-        $this->assertEquals('Software Engineer', $result[0]->title);
-        $this->assertEquals('Senior Software Engineer', $result[1]->title);
+        $this->assertEquals('Software Engineer', $result[0]['title']);
+        $this->assertEquals('Senior Software Engineer', $result[1]['title']);
         $this->assertEquals(8, count($result));
     }
 

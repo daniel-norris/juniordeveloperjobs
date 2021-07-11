@@ -18,6 +18,7 @@ class RecruiterSeeder extends Seeder
         $faker = Factory::create();
 
         DB::table('recruiters')->insert([
+            'id' => 1,
             'title' => $faker->title(),
             'forename' => $faker->firstName(),
             'middle' => '',
@@ -28,6 +29,7 @@ class RecruiterSeeder extends Seeder
         ]);
 
         DB::table('recruiters')->insert([
+            'id' => 2,
             'title' => $faker->title(),
             'forename' => $faker->firstName(),
             'middle' => '',
@@ -38,6 +40,7 @@ class RecruiterSeeder extends Seeder
         ]);
 
         DB::table('recruiters')->insert([
+            'id' => 3,
             'title' => $faker->title(),
             'forename' => $faker->firstName(),
             'middle' => '',
@@ -48,6 +51,7 @@ class RecruiterSeeder extends Seeder
         ]);
     
         DB::table('recruiters')->insert([
+            'id' => 4,
             'title' => $faker->title(),
             'forename' => $faker->firstName(),
             'middle' => '',

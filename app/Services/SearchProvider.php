@@ -11,7 +11,7 @@ class SearchProvider
     {
         $results = collect();
 
-        if (empty($input)) {
+        if (empty($input['search'])) {
             return DB::table('adverts')->get();
         }
 

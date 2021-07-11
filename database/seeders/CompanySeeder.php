@@ -24,8 +24,11 @@ class CompanySeeder extends Seeder
 
         $faker = Factory::create();
 
-        foreach($companies as $company) {
+        $id = 1;
+
+        foreach($companies as $company){
             DB::table('companies')->insert([
+                'id' => $id++,
                 'name' => $company,
                 'registered_name' => $company . ' Inc.',
                 'address_1' => $faker->buildingNumber(),

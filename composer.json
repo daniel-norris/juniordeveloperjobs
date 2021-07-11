@@ -43,6 +43,14 @@
         ],
         "test": [
             "@php vendor/bin/phpunit --colors=always"
+        ],
+        "coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --coverage-text"
+        ],
+        "coverage-html": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --coverage-html .coverage"
         ]
     },
     "extra": {

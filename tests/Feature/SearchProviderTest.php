@@ -16,7 +16,7 @@ class SearchProviderTest extends TestCase
 
         $this->seed();
 
-        $this->searchProvider = new SearchProvider;
+        $this->searchProvider = new SearchProvider();
     }
 
     /**
@@ -70,10 +70,10 @@ class SearchProviderTest extends TestCase
         $this->assertEquals('Senior Software Engineer', $result[1]->title);
         $this->assertEquals(8, count($result));
     }
-    
+
     /**
      * Checks that the search provider returns all results when input is empty.
-     * 
+     *
      * @return void
      */
     public function testEmptyUserSearchReturnsAllAdverts()

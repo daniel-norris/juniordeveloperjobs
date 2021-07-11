@@ -29,7 +29,7 @@ class SearchProvider
     }
 
     public function getCompanies(string $input): Collection
-    {        
+    {
         $companies = DB::table('companies')
             ->where('name', 'like', $input)
             ->orWhere('registered_name', 'like', $input)
@@ -38,13 +38,13 @@ class SearchProvider
             ->orWhere('city', 'like', $input)
 
             ->orWhere('region', 'like', $input)
-            ->orWhere('country', 'like',$input)
+            ->orWhere('country', 'like', $input)
             ->orWhere('postcode', 'like', $input)
-            ->get();       
+            ->get();
 
         $adverts = collect();
 
-        $companies->map(function ($company) use ($adverts) {   
+        $companies->map(function ($company) use ($adverts) {
             $adverts->push(
                 DB::table('adverts')
                     ->where('company_id', $company->id)

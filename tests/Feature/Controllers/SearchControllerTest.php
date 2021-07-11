@@ -30,7 +30,7 @@ class SearchControllerTest extends TestCase
 
     /**
      * Test that the search page returns a 200.
-     * 
+     *
      * @return void
      */
     public function testSearchPageIsSuccessful()
@@ -38,13 +38,13 @@ class SearchControllerTest extends TestCase
         $response = $this->get('/search', [
             'search' => 'Amazon'
         ]);
-        
+
         $response->assertStatus(200);
     }
 
     /**
      * Test that the search page returns a view with the correct data successfully.
-     * 
+     *
      * @return void
      */
     public function testSearchControllerViewIsCorrect()

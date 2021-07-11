@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container mx-auto pb-12">
         <div class="flex flex-col h-80 items-center justify-center">
-            <form method="GET" action="search" class="flex flex-col w-1/3">
+            <form method="GET" action="{{ route('search') }}" class="flex flex-col w-1/3">
                 <label aria-label="search" for="search"></label>
                 <input class="py-2 px-4 rounded-lg shadow-md" type="text" id="search" name="search" placeholder="Search for your dream job now...">
             </form>

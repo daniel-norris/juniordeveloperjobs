@@ -19,7 +19,7 @@ class SearchController extends Controller
     public function search(Request $request, SearchProvider $search): View
     {
         $validated = $request->validate([
-            'search' => 'required|max:255',
+            'search' => 'max:255',
         ]);
 
         $results = $search->create($validated);

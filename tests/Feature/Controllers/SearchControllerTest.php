@@ -1,10 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Controllers\Feature;
 
-use App\Services\SearchProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use stdClass;
 use Tests\TestCase;
 
 class SearchControllerTest extends TestCase
@@ -19,7 +17,7 @@ class SearchControllerTest extends TestCase
     }
 
     /**
-     * Test that the home page is returned successfully.
+     * Test that the home page returns a 200.
      *
      * @return void
      */
@@ -31,7 +29,7 @@ class SearchControllerTest extends TestCase
     }
 
     /**
-     * Test that the search page is returned successfully.
+     * Test that the search page returns a 200.
      * 
      * @return void
      */
@@ -42,5 +40,21 @@ class SearchControllerTest extends TestCase
         ]);
         
         $response->assertStatus(200);
+    }
+
+    /**
+     * Test that the search page returns a view with the correct data successfully.
+     * 
+     * @return void
+     */
+    public function testSearchControllerViewIsCorrect()
+    {
+        $this->withoutExceptionHandling();
+
+        $response = $this->get('/search', [
+            'search' => 'Amazon'
+        ]);
+
+        $response->assertViewHas('adverts');
     }
 }

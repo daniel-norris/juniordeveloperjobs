@@ -20,28 +20,28 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'id' => 1,
-            'name' => $faker->firstName(),
+            'username' => $faker->firstName(),
             'email' => $faker->email(),
             'password' => Hash::make('testing123'),
         ]);
 
         DB::table('users')->insert([
             'id' => 2,
-            'name' => $faker->firstName(),
+            'username' => $faker->firstName(),
             'email' => $faker->email(),
             'password' => Hash::make('testing123'),
         ]);
 
         DB::table('users')->insert([
             'id' => 3,
-            'name' => $faker->firstName(),
+            'username' => $faker->firstName(),
             'email' => $faker->email(),
             'password' => Hash::make('testing123'),
         ]);
 
         DB::table('users')->insert([
             'id' => 4,
-            'name' => $faker->firstName(),
+            'username' => $faker->firstName(),
             'email' => $faker->email(),
             'password' => Hash::make('testing123'),
         ]);

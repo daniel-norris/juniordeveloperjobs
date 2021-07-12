@@ -12,7 +12,7 @@
                 @endguest
                 @auth
                     <p class="text-white mr-2">
-                        Welcome, {{ Auth::user()->name }} |
+                        Welcome, {{ Auth::user()->username }} |
                     </p>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

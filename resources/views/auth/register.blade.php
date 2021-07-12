@@ -1,3 +1,13 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <x-layout>
     <div class="container mx-auto p-6 space-y-6">
         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
@@ -18,8 +28,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <label for="user_type" class="block text-sm font-medium text-gray-700">I'm a...</label>
                                 <select id="user_type" name="user_type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" x-on:change="isShowing = $event.target.value">
-                                    <option>Job Seeker</option>
-                                    <option>Recruiter</option>
+                                    <option value="candidate">Candidate</option>
+                                    <option value="recruiter">Recruiter</option>
                                 </select>
                             </div>
 
@@ -40,7 +50,7 @@
 
                             <div class="col-span-6">
                                 <label for="bio" class="block text-sm font-medium text-gray-700">
-                                    About
+                                    Bio
                                 </label>
                                 <div class="mt-1">
                                     <textarea id="bio" name="bio" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
@@ -50,24 +60,24 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-6 sm:col-span-3" x-show="isShowing === 'Recruiter'">
+                            <div class="col-span-6 sm:col-span-3" x-show="isShowing === 'recruiter'">
                                 <label for="company_name" class="block text-sm font-medium text-gray-700">Company name</label>
                                 <input type="text" name="company_name" id="company_name" autocomplete="company_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 
-                            <div class="col-span-6 sm:col-span-3" x-show="isShowing === 'Recruiter'">
+                            <div class="col-span-6 sm:col-span-3" x-show="isShowing === 'recruiter'">
                                 <label for="company_registered_name" class="block text-sm font-medium text-gray-700">Company registered name</label>
                                 <input type="text" name="company_registered_name" id="company_registered_name" autocomplete="company_registered_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 
                             <div class="col-span-6">
-                                <label for="street_address_1" class="block text-sm font-medium text-gray-700">Street address 1</label>
-                                <input type="text" name="street_address_1" id="street_address_1" autocomplete="street_address_1" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="address_1" class="block text-sm font-medium text-gray-700">Building no.</label>
+                                <input type="text" name="address_1" id="address_1" autocomplete="address_1" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 
-                            <div class="col-span-6" x-show="isShowing === 'Recruiter'">
-                                <label for="street_address_2" class="block text-sm font-medium text-gray-700">Street address 2</label>
-                                <input type="text" name="street_address_2" id="street_address_2" autocomplete="street_address_2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <div class="col-span-6">
+                                <label for="address_2" class="block text-sm font-medium text-gray-700">Street address</label>
+                                <input type="text" name="address_2" id="address_2" autocomplete="address_2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2">
@@ -81,8 +91,8 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                <label for="zip" class="block text-sm font-medium text-gray-700">Postcode</label>
-                                <input type="text" name="zip" id="zip" autocomplete="zip" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <label for="postcode" class="block text-sm font-medium text-gray-700">Postcode</label>
+                                <input type="text" name="postcode" id="postcode" autocomplete="postcode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
@@ -94,17 +104,17 @@
                                 </select>
                             </div>
 
-                            <div class="col-span-6 sm:col-span-4" x-show="isShowing === 'Recruiter'">
+                            <div class="col-span-6 sm:col-span-4" x-show="isShowing === 'recruiter'">
                                 <label for="company_email" class="block text-sm font-medium text-gray-700">Company email address</label>
                                 <input type="text" name="company_email" id="company_email" autocomplete="company_email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 
-                            <div class="col-span-6 sm:col-span-4" x-show="isShowing === 'Recruiter'">
+                            <div class="col-span-6 sm:col-span-4" x-show="isShowing === 'recruiter'">
                                 <label for="company_phone" class="block text-sm font-medium text-gray-700">Company phone number</label>
                                 <input type="text" name="company_phone" id="company_phone" autocomplete="company_phone" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 
-                            <div class="col-span-6 sm:col-span-4" x-show="isShowing === 'Recruiter'">
+                            <div class="col-span-6 sm:col-span-4" x-show="isShowing === 'recruiter'">
                                 <label for="company_url" class="block text-sm font-medium text-gray-700">Company url</label>
                                 <input type="text" name="company_url" id="company_url" autocomplete="company_url" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
@@ -115,7 +125,7 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-4">
-                                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
 

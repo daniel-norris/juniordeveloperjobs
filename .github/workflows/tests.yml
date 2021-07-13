@@ -1,0 +1,56 @@
+on:
+  pull_request:
+    paths:
+    - '**.php'
+
+name: Tests
+
+jobs:
+  # runPHPUnitTests:
+  #   runs-on: ubuntu-20.04
+  #   name: Run PHP Unit tests
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: php-actions/composer@v5
+  #       with: 
+  #         # show installation progress
+  #         progress: yes
+  #         # composer version
+  #         version: 2
+  #         # php version
+  #         php_version: 8.0
+  #     - run: cp .env.example .env
+  #     - run: php artisan key:generate
+  #     - run: php artisan test
+  runStaticAnalysis:
+    name: Run static analysis on Psalm
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v5
+        with: 
+          # show installation progress
+          progress: yes
+          # composer version
+          version: 2
+          # php version
+          php_version: 8.0
+      - run: cp .env.example .env
+      - run: php artisan key:generate
+      - run: ./vendor/bin/psalm
+  runPHPCS:
+    name: Run PHP Code Sniffer
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v5
+        with: 
+          # show installation progress
+          progress: yes
+          # composer version
+          version: 2
+          # php version
+          php_version: 8.0
+      - run: cp .env.example .env
+      - run: php artisan key:generate
+      - run: ./vendor/bin/phpcs

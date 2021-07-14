@@ -35,7 +35,7 @@ class AuthenticationTest extends TestCase
 
     /**
      * Test that the user is redirected from the login page if already authenticated.
-     * 
+     *
      * @return void
      */
     public function testUserRedirectedIfAuthenticated()
@@ -48,16 +48,16 @@ class AuthenticationTest extends TestCase
 
     /**
      * Test that the user cannot login with an incorrect password.
-     * 
+     *
      * @return void
      */
     public function testUserCannotLoginWithIncorrectPassword()
-    {       
+    {
         $response = $this->from('/login')->post('/login', [
             'email' => $this->user->email,
             'password' => 'invalid-password',
         ]);
-        
+
         $response->assertRedirect('/login');
         $response->assertSessionHasErrors('email');
         $this->assertTrue(session()->hasOldInput('email'));
@@ -82,9 +82,9 @@ class AuthenticationTest extends TestCase
         $this->assertAuthenticatedAs($this->user);
     }
 
-    /** 
+    /**
      * Test that when a user logs out the session is flushed successfully.
-     * 
+     *
      * @return void
      */
     public function testUserCanLogout()

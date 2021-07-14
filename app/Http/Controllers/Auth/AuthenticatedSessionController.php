@@ -13,9 +13,9 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-    /** 
+    /**
      * Display the login view.
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function create(): View
@@ -25,31 +25,30 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Handle an incoming authentication request.
-     * 
+     *
      * @param \App\Http\Requests\Auth\LoginRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request): RedirectResponse
     {
         if (! Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
-            
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
             ]);
 
             return redirect()->intended(route('login'));
         }
-        
+
         $request->session()->regenerate();
-    
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
      * Handle an incoming logout request.
-     * 
+     *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Request $request)
     {

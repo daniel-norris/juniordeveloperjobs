@@ -27,7 +27,7 @@ class RegisteredUserController extends Controller
      * Handle an incoming registration request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -47,12 +47,12 @@ class RegisteredUserController extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             ]);
-    
+
             $user = User::create([
                 'username' => substr($request->forename, 0, 2) . substr($request->surname, 0, 3),
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-            ]);            
+            ]);
 
             DB::table('candidates')->insert([
                 'forename' => $request->forename,
@@ -87,13 +87,13 @@ class RegisteredUserController extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             ]);
-    
+
             $user = User::create([
                 'username' => substr($request->forename, 0, 2) . substr($request->surname, 0, 3),
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-            ]);    
-            
+            ]);
+
             $companyId = DB::table('companies')->insertGetId([
                 'name' => $request->company_name,
                 'registered_name' => $request->company_registered_name,
@@ -101,7 +101,7 @@ class RegisteredUserController extends Controller
                 'address_2' => $request->address_2,
                 'city' => $request->city,
                 'region' => $request->state,
-                'country' => $request->country, 
+                'country' => $request->country,
                 'postcode' => $request->postcode,
                 'phone' => $request->company_phone,
                 'url' => $request->company_url,
@@ -116,7 +116,7 @@ class RegisteredUserController extends Controller
                 'user_id' => $user->id,
             ]);
         }
-    
+
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);

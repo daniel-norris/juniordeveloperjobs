@@ -13,6 +13,10 @@ class ExampleTest extends TestCase
      */
     public function testExample()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/search', [
+            'search' => 'Amazon'
+        ]);
+
+        $response->assertStatus(200);
     }
 }
